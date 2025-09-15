@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
             phoneNumber
         });
 
-        // await user.save
+        await user.save()
 
         res.status(201).json({
             message: "User registered successfully",
@@ -39,3 +39,28 @@ exports.register = async (req, res) => {
         })
     }
 };
+exports.getOneUser = async (req,res) => {
+  try {
+    const id = req.params.id
+    const user = await userModel.findById(id)
+    if(!user){
+      return res.status(404).json({
+        statusCode:false,
+        statusText:'not found',
+        message:'No user found'
+      });
+    };
+    res.status(200).json({
+      statusCode:true,
+      statusText:'Ok',
+      message:'User below',
+      data:user
+    })
+  } catch (error) {
+    res.status(500).json({
+      statusCode:false,
+      statusText:'Internal server error',
+      message:'Error getting user'+error.message
+    })
+  }
+}

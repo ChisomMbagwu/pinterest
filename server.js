@@ -14,7 +14,7 @@ app.use('/api/v1', userRouter);
 app.use((error, req, res, next) =>{
 if (error) {
     return res.status(500).json({
-        message: error.message
+        message: error.message 
     })
 };
 next();
