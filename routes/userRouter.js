@@ -3,8 +3,9 @@ const uploads = require('../middleware/multer');
 
 const router = express.Router()
 
-const { register } = require('../controllers/userController')
+const { register, getOneUser } = require('../controllers/userController')
 
 router.post('/register', uploads.single('profilePicture'), register);
+router.get('/getOne/:id', getOneUser)
 
 module.exports = router;

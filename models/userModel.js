@@ -23,7 +23,7 @@ age: {
     required: true
 },
 phoneNumber: {
-    type: Number,
+    type: String,
     required: true,
     trim: true,
     unique: true
@@ -31,11 +31,9 @@ phoneNumber: {
 profilePicture: {
    imageUrl: {
  type:  String,
- required: true
 },
  publicId: {
     type:  String,
- required: false
 }
  }
 
